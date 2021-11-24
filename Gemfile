@@ -2,6 +2,10 @@
 
 source 'https://rubygems.org'
 
-gem 'rubocop'
 gem 'sinatra'
-gem 'sinatra-contrib'
+
+group :test, :development do
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'rubocop'
+end
