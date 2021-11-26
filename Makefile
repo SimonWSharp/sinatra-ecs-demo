@@ -7,4 +7,4 @@ check:
 	bundle exec rubocop
 
 test: 
-	bundle exec rspec .
+	bundle exec rspec
