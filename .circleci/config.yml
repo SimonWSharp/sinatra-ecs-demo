@@ -7,6 +7,10 @@ executors:
     docker:
       - image: cimg/ruby:2.6.6
     resource_class: small
+  docker-builder:
+    docker:
+      - image: docker:17.05.0-ce-git
+    resource_class: small
 
 # Shared steps for setup of images
 commands:
@@ -37,9 +41,10 @@ jobs:
       - setup
       - run: make check
   docker-build:
-    executor: ruby
+    executor: docker-builder
     steps:
-      - setup
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build application Docker image
           command: |
