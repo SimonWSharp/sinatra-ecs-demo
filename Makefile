@@ -5,7 +5,7 @@ install:
 	bundle check --path=vendor/bundle || bundle install --path vendor/bundle
 
 start:
-	bundle exec rackup
+	bundle exec rackup --host 0.0.0.0
 
 check:
 	bundle exec rubocop
