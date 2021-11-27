@@ -36,6 +36,14 @@ jobs:
     steps:
       - setup
       - run: make check
+  docker-build:
+    executor: ruby
+    steps:
+      - setup
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build -t sinatra-ecs-demo .
 
 workflows:
   quality:
@@ -47,3 +55,7 @@ workflows:
       - lint:
           requires:
             - build
+      - docker-build:
+          requires:
+            - test
+            - lint
