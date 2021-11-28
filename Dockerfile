@@ -11,11 +11,13 @@ FROM ruby:2.6.6-alpine
 
 WORKDIR /usr/local/
 
-COPY Gemfile Gemfile.lock config.ru .bundle ./
+RUN apk add --no-cache make
+
+COPY Makefile Gemfile Gemfile.lock config.ru .bundle ./
 COPY app ./app/
 COPY --from=builder /usr/local/vendor/ ./vendor/
 
-RUN gem install bundler:1.17.3 && bundle check --path=vendor/bundle
+RUN make install
 
 EXPOSE 9292
 
