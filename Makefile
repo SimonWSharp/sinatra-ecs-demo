@@ -5,10 +5,13 @@ install:
 	bundle check --path=vendor/bundle || bundle install --path vendor/bundle
 
 start:
-	bundle exec rackup --host 0.0.0.0
+	bundle exec puma
 
 check:
 	bundle exec rubocop
 
 test: 
 	bundle exec rspec
+
+docker-build:
+	docker build -t sinatra/demo .
