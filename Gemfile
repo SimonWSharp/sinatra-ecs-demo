@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'sinatra'
 gem 'puma'
+gem 'sinatra'
 
 group :test, :development do
   gem 'rack-test'
