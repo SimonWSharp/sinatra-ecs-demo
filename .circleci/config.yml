@@ -9,7 +9,7 @@ executors:
     resource_class: small
   docker-builder:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:18.06.3-ce-git
     resource_class: small
 
 # Shared steps for setup of images
@@ -48,6 +48,7 @@ jobs:
       - run:
           name: Build application Docker image
           command: |
+            apk add --no-cache make
             make docker-build
 
 workflows:
